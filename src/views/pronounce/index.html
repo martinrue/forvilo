@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../shared.css">
+  <link rel="stylesheet" type="text/css" href="./index.css">
+
+  <title>Forvilo</title>
+</head>
+
+<body>
+  <section class="container">
+    <div class="input-container">
+      <input type="text" class="input" maxlength="64" spellcheck="false" dir="auto" placeholder="Search pronunciations..." />
+      <div class="loader"></div>
+    </div>
+
+    <div class="pronunciations" tabindex="-1" />
+  </section>
+
+  <audio id="player" hidden>
+    <source type="audio/mpeg">
+  </audio>
+
+  <script>let exports = { "__esModule": true };</script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

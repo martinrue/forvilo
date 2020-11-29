@@ -1,0 +1,37 @@
+{
+  "name": "forvilo",
+  "version": "0.0.1",
+  "main": "src/app.js",
+  "author": "Martin Rue",
+  "build": {
+    "appId": "com.forvilo.mac",
+    "productName": "Forvilo",
+    "copyright": "Copyright © 2020 ${author}",
+    "artifactName": "forvilo-macos.${version}.${ext}",
+    "afterPack": "./after-pack.js",
+    "mac": {
+      "target": "dmg",
+      "identity": null
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist && find ./src -type f -name '*.js' -delete",
+    "compile:ts": "tsc",
+    "electron-dev": "electron . --dev",
+    "electron-build": "electron-builder",
+    "dev": "run-s clean compile:* electron-dev",
+    "build": "run-s clean compile:* electron-build"
+  },
+  "devDependencies": {
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.1",
+    "timeout-signal": "^1.1.0"
+  }
+}

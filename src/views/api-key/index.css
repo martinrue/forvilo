@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  padding: 20px;
+}
+
+.container .title {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #eee;
+}
+
+.container .input {
+  margin-top: 15px;
+  font-size: 16px;
+  background: #1d1d1d;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  color: #fff;
+  -webkit-app-region: none;
+}
+
+.container .button {
+  flex: 0;
+  align-self: flex-end;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 15px;
+  border-radius: 5px;
+  padding: 10px 12px;
+  background: #19b235;
+  color: #fff;
+  -webkit-app-region: none;
+}
+
+.container .button:hover {
+  background: #29c245;
+  cursor: pointer;
+}

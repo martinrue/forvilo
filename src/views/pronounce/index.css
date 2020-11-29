@@ -1,0 +1,114 @@
+html,
+body {
+  width: 100%;
+  display: flex;
+  -webkit-app-region: drag;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  padding: 5px;
+  -webkit-app-region: drag;
+}
+
+.container .input-container {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+}
+
+.container .input-container .input {
+  flex: 1;
+  font-size: 20px;
+  background: none;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  -webkit-app-region: none;
+}
+
+.container .pronunciations {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 15px 10px;
+  display: none;
+}
+
+.container .pronunciations .pronunciation {
+  display: flex;
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.container .pronunciations .pronunciation:last-child {
+  margin-bottom: 0;
+}
+
+.container .pronunciations .pronunciation div {
+  margin-right: 10px;
+}
+
+.container .pronunciations .pronunciation .index {
+  color: #666;
+  width: 25px;
+  padding: 3px 0;
+  text-align: center;
+  line-height: 100%;
+  background: #202020;
+  border: solid 1px #272727;
+  border-radius: 6px;
+}
+
+.container .pronunciations .pronunciation .code {
+  width: 36px;
+  padding: 3px 0;
+  text-align: center;
+  background: #202020;
+  border: solid 1px #272727;
+  border-radius: 6px;
+}
+
+.container .pronunciations .pronunciation .voice {
+  width: 20px;
+  padding: 3px 0;
+  text-align: center;
+  font-weight: bold;
+  background: #202020;
+  border: solid 1px #272727;
+  border-radius: 6px;
+}
+
+.container .pronunciations .pronunciation .country {
+  padding: 3px 0;
+}
+
+.container .pronunciations .pronunciation.current,
+.container .pronunciations .pronunciation.current .index {
+  color: #29c245;
+}
+
+.loader {
+  border: 3px solid #fff;
+  border-top: 3px solid #19b235;
+  border-top: 3px solid #151515;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  margin-right: 10px;
+  display: none;
+  animation: spin 650ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
