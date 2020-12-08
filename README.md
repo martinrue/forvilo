@@ -2,6 +2,8 @@
 
 Forvilo is a Mac menu bar application for quickly fetching audio pronunciations from [Forvo](https://forvo.com).
 
+![Screenshot of Forvilo](/build/screenshot.png)
+
 ## Usage
 
 ### Setup
