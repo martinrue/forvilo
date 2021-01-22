@@ -15,6 +15,7 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
     webPreferences: {
       scrollBounce: true,
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -46,6 +47,10 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
     window.setPosition(x, 200, animate);
   };
 
+  const setHeight = (height: number, animate = true) => {
+    window.setSize(window.getBounds().width, height, animate);
+  };
+
   const shouldQuit = () => (allowQuit = true);
   const toggle = () => (window.isVisible() ? window.hide() : window.show());
   const hide = () => window.hide();
@@ -54,6 +59,7 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
   return {
     load,
     center,
+    setHeight,
     shouldQuit,
     toggle,
     hide,

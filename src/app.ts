@@ -91,6 +91,12 @@ const init = () => {
     {
       action: "fetch-pronunciations",
       fn: fetchPronunciations,
+    },
+    {
+      action: "set-input-window-height",
+      fn: (_, height: number) => {
+        window.setHeight(height, true);
+      },
     }
   );
 

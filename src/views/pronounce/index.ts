@@ -1,4 +1,4 @@
-import { remote } from "electron";
+// import { remote } from "electron";
 import { onReady, $ } from "../../helpers";
 import { dispatch, registerEvents } from "../../actions";
 
@@ -54,7 +54,7 @@ onReady(() => {
 
   const updateHeight = () => {
     requestAnimationFrame(() => {
-      remote.getCurrentWindow().setSize(450, document.body.scrollHeight, true);
+      dispatch("set-input-window-height", document.body.scrollHeight);
       requestAnimationFrame(() => window.scroll(0, 0));
     });
   };

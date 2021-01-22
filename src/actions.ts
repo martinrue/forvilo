@@ -1,6 +1,6 @@
 import { IpcMainEvent, ipcMain, ipcRenderer, IpcRendererEvent } from "electron";
 
-type Action = "hide-window" | "save-api-key" | "fetch-pronunciations";
+type Action = "hide-window" | "save-api-key" | "fetch-pronunciations" | "set-input-window-height";
 type Event = "fetched-pronunciations";
 
 interface ActionHandler {
