@@ -1,6 +1,6 @@
 import { IpcMainEvent, app, globalShortcut } from "electron";
 
-import { createWindow } from "./window";
+import { createWindow, Window } from "./window";
 import { createTrayMenu } from "./tray";
 import { registerActions, reply } from "./actions";
 
@@ -70,22 +70,27 @@ const fetchPronunciations = async (event: IpcMainEvent, search: string) => {
 const init = () => {
   const config = store.load();
 
-  const window = createWindow({ allowQuit: false });
-  window.load(config.apiKey ? "pronounce" : "api-key");
+  const createNewWindow = () => {
+    const window = createWindow({ allowQuit: false });
+    window.load(config.apiKey ? "pronounce" : "api-key");
+    return window;
+  };
+
+  let window: Window | null;
 
   api.setKey(config.apiKey);
 
   registerActions(
     {
       action: "hide-window",
-      fn: () => window.hide(),
+      fn: () => window?.hide(),
     },
     {
       action: "save-api-key",
       fn: (_, key: string) => {
         store.setKey(key);
         api.setKey(key);
-        window.load("pronounce");
+        window?.load("pronounce");
       },
     },
     {
@@ -95,7 +100,7 @@ const init = () => {
     {
       action: "set-input-window-height",
       fn: (_, height: number) => {
-        window.setHeight(height, true);
+        window?.setHeight(height, true);
       },
     }
   );
@@ -104,13 +109,21 @@ const init = () => {
     {
       label: "Quit",
       click: () => {
-        window.shouldQuit();
+        window?.shouldQuit();
         app.quit();
       },
     },
   ]);
 
   globalShortcut.register("Control+Shift+P", () => {
+    if (window?.isShown()) {
+      window.hide();
+      return;
+    }
+
+    window?.close();
+    window = createNewWindow();
+
     window.toggle();
     window.center();
     window.focus();

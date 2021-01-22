@@ -1,4 +1,3 @@
-// import { remote } from "electron";
 import { onReady, $ } from "../../helpers";
 import { dispatch, registerEvents } from "../../actions";
 

@@ -1,6 +1,18 @@
 import { BrowserWindow, screen } from "electron";
 
-export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
+export interface Window {
+  load: (id: "api-key" | "pronounce") => void;
+  center: () => void;
+  setHeight: (height: number, animate: boolean) => void;
+  shouldQuit: () => void;
+  toggle: () => void;
+  hide: () => void;
+  isShown: () => boolean;
+  focus: () => void;
+  close: () => void;
+}
+
+export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }): Window => {
   const window = new BrowserWindow({
     width: 450,
     height: 0,
@@ -19,7 +31,6 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
     },
   });
 
-  window.setVisibleOnAllWorkspaces(true);
   window.setAlwaysOnTop(true);
 
   window.on("close", (e: Electron.Event) => {
@@ -54,7 +65,13 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
   const shouldQuit = () => (allowQuit = true);
   const toggle = () => (window.isVisible() ? window.hide() : window.show());
   const hide = () => window.hide();
+  const isShown = () => window.isVisible();
   const focus = () => window.focus();
+
+  const close = () => {
+    allowQuit = true;
+    window.close();
+  };
 
   return {
     load,
@@ -63,6 +80,8 @@ export const createWindow = ({ allowQuit = true }: { allowQuit: boolean }) => {
     shouldQuit,
     toggle,
     hide,
+    isShown,
     focus,
+    close,
   };
 };
